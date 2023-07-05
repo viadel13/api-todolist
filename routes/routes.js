@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const Tache = require('../models/Taches')
 const mongoose = require('mongoose');
-async function main(){
+require("dotenv").config();
 
+async function main(){
     try {
-        await mongoose.connect("mongodb://127.0.0.1/todolist");
+        // await mongoose.connect("mongodb://127.0.0.1/todolist");
+        await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('connexion ok');
     } catch (error) {
         console.log('erreur: ', error);
