@@ -9,7 +9,7 @@ async function main(){
         await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('connexion ok');
     } catch (error) {
-        console.log('erreur: ', error);
+        console.log('erreur de d: ', error);
     }
     
     router.post('/addTaches', async (req, res)=>{
