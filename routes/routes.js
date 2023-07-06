@@ -9,7 +9,7 @@ async function main(){
         await mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
         console.log('connexion ok');
     } catch (error) {
-        console.log('erreur de d: ', error);
+        console.log('erreur: ', error);
     }
     
     router.post('/addTaches', async (req, res)=>{
@@ -36,10 +36,12 @@ async function main(){
        res.json(response);
     })
 
-    router.get('/rename/:tache/:id', async (req, res)=>{
+    router.get('/rename/:tache/:id/:date', async (req, res)=>{
+        // console.log(req.params)
         const response = await Tache.updateOne({
             id: req.params.id,
-            tache: req.params.tache
+            tache: req.params.tache,
+            date: req.params.date
         })
 
         console.log(response)
